@@ -106,8 +106,8 @@ class adduserscreen extends StatelessWidget {
                     child: TextFormField(
                       controller: gender,
                       validator: (value) {
-                        if(value!.isEmpty || !value.contains("male") || !value.contains("female")){
-                          return "Please enter your gender (male or female)";
+                        if(value!.isEmpty ){
+                          return "Please enter your gender ";
                         }
                         return null;
                       },
@@ -126,8 +126,8 @@ class adduserscreen extends StatelessWidget {
                     child: TextFormField(
                       controller: status,
                       validator: (value) {
-                        if(value!.isEmpty || !value.contains("active") || !value.contains("inactive")){
-                          return "Please enter your status (active or inactive)";
+                        if(value!.isEmpty){
+                          return "Please enter your status ";
                         }
                         return null;
                       },

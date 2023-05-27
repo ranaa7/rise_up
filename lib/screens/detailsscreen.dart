@@ -53,20 +53,7 @@ class Detailscreen extends StatelessWidget {
                       Text(cubit1.usermodel?.status?? "",
                           style: TextStyle(color: Colors.black,fontSize: 20)),
 
-                      // ElevatedButton(
-                      //     style: ElevatedButton.styleFrom(
-                      //       primary: Colors.pink, // background
-                      //       onPrimary: Colors.purple, // foreground
-                      //     ),
-                      //     onPressed: () {
-                      //       cubit1.updateUser(Updatemodel( name: name.text, email: email.text, gender: gender.text, status: status.text), cubit.usermodel!.id);
-                      //       Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserListScreen()));
-                      //     },
-                      //     child: Text(
-                      //       "Add new user",
-                      //       style: TextStyle(color: Colors.black),
-                      //
-                      //     )),
+
                     ],
                   ),
                 ),

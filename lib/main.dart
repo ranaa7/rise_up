@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:riseup_task/screens/adduserscreen.dart';
-import 'package:riseup_task/screens/tryscreen.dart';
 import 'package:riseup_task/screens/usersscreen.dart';
 
 import 'cubit/cubitclass_cubit.dart';

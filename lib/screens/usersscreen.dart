@@ -66,162 +66,148 @@ class UserListScreen extends StatelessWidget {
                     ),
                     ],),
                   ),
-                    Expanded(
-                      child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.cyan[200], // background
-                            onPrimary: Colors.purple, // foreground
-                          ),
-                          onPressed: () {
-                            // Navigator.of(context).push(MaterialPageRoute(builder: (context) => updateuserscreen( id: cubit.users[index].id)));
-                            showDialog<String>(
-                              context: context,
-                              builder: (BuildContext context) =>
-                                  Form(
-                                    child: AlertDialog(
-                                      key: _formKey,
-                                      title: const Text('Update User'),
-                                      content: Column(children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        TextFormField(
-                                          controller: name,
-                                          validator: (value) {
-                                            if (value!.isEmpty) {
-                                              return "Please enter your name";
-                                            }
-                                            return null;
-                                          },
-                                          decoration: InputDecoration(
-                                            hintText: ("Name"),
-                                            border: OutlineInputBorder(
-                                              borderRadius: BorderRadius
-                                                  .circular(10),
-                                            ),
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.cyan[200], // background
+                          onPrimary: Colors.purple, // foreground
+                        ),
+                        onPressed: () {
+                          // Navigator.of(context).push(MaterialPageRoute(builder: (context) => updateuserscreen( id: cubit.users[index].id)));
+                          showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) =>
+                                Form(
+                                  key: _formKey,
+                                  child: AlertDialog(
+                                    title: const Text('Update User'),
+                                    content: Column(children: [
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      TextFormField(
+                                        controller: name,
+                                        validator: (value) {
+                                          if (value!.isEmpty) {
+                                            return "Please enter your name";
+                                          }
+                                          return null;
+                                        },
+                                        decoration: InputDecoration(
+                                          hintText: ("Name"),
+                                          border: OutlineInputBorder(
+                                            borderRadius: BorderRadius
+                                                .circular(10),
                                           ),
                                         ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        TextFormField(
-                                          controller: email,
-                                          validator: (value) {
-                                            if (value!.isEmpty ||
-                                                !value.contains("@")) {
-                                              return "Please enter your email contains @";
-                                            }
-                                            return null;
-                                          },
-                                          decoration: InputDecoration(
-                                            hintText: ("Email"),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      TextFormField(
+                                        controller: email,
+                                        validator: (value) {
+                                          if (value!.isEmpty ||
+                                              !value.contains("@")) {
+                                            return "Please enter your email contains @";
+                                          }
+                                          return null;
+                                        },
+                                        decoration: InputDecoration(
+                                          hintText: ("Email"),
 
-                                            border: OutlineInputBorder(
-                                              borderRadius: BorderRadius
-                                                  .circular(10),
-                                            ),
+                                          border: OutlineInputBorder(
+                                            borderRadius: BorderRadius
+                                                .circular(10),
                                           ),
                                         ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        TextFormField(
-                                          controller: gender,
-                                          validator: (value) {
-                                            if (value!.isEmpty ||
-                                                !value.contains("male") ||
-                                                !value.contains("female")) {
-                                              return "Please enter your gender (male or female)";
-                                            }
-                                            return null;
-                                          },
-                                          decoration: InputDecoration(
-                                            hintText: ("Gender"),
-                                            border: OutlineInputBorder(
-                                              borderRadius: BorderRadius
-                                                  .circular(10),
-                                            ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      TextFormField(
+                                        controller: gender,
+                                        validator: (value) {
+                                          if (value!.isEmpty )
+                                               {
+                                            return "Please enter your gender";
+                                          }
+                                          return null;
+                                        },
+                                        decoration: InputDecoration(
+                                          hintText: ("Gender"),
+                                          border: OutlineInputBorder(
+                                            borderRadius: BorderRadius
+                                                .circular(10),
                                           ),
                                         ),
-                                        TextFormField(
-                                          controller: status,
-                                          validator: (value) {
-                                            if (value!.isEmpty ||
-                                                !value.contains("active") ||
-                                                !value.contains("inactive")) {
-                                              return "Please enter your status (active or inactive)";
-                                            }
-                                            return null;
-                                          },
-                                          decoration: InputDecoration(
-                                            hintText: ("Status"),
-                                            border: OutlineInputBorder(
-                                              borderRadius: BorderRadius
-                                                  .circular(10),
-                                            ),
+                                      ),
+                                      TextFormField(
+                                        controller: status,
+                                        validator: (value) {
+                                          if (value!.isEmpty ) {
+                                            return "Please enter your status ";
+                                          }
+                                          return null;
+                                        },
+                                        decoration: InputDecoration(
+                                          hintText: ("Status"),
+                                          border: OutlineInputBorder(
+                                            borderRadius: BorderRadius
+                                                .circular(10),
                                           ),
                                         ),
+                                      ),
 
 
-                                      ],),
-                                      actions: <Widget>[
-                                        ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              primary: Colors.pink,
-                                              // background
-                                              onPrimary: Colors
-                                                  .purple, // foreground
-                                            ),
-                                            onPressed: () {
-                                              if (_formKey.currentState!
-                                                  .validate()) {
-                                                cubit.updateUser(Updatemodel(
-                                                    name: name.text,
-                                                    email: email.text,
-                                                    gender: gender.text,
-                                                    status: status.text),
-                                                    cubit.users[index].id);
-                                                Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            UserListScreen()));
-                                              }
-                                            },
-                                            child: Text(
-                                              "Update user",
-                                              style: TextStyle(
-                                                  color: Colors.black),
+                                    ],),
+                                    actions: <Widget>[
+                                      ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Colors.pink,
+                                            // background
+                                            onPrimary: Colors
+                                                .purple, // foreground
+                                          ),
+                                          onPressed: () {
+                                            if (_formKey.currentState!
+                                                .validate()) {
+                                              cubit.updateUser(Updatemodel(
+                                                  name: name.text,
+                                                  email: email.text,
+                                                  gender: gender.text,
+                                                  status: status.text),
+                                                  cubit.users[index].id);
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          UserListScreen()));
+                                            }
+                                          },
+                                          child: Text(
+                                            "Update user",
+                                            style: TextStyle(
+                                                color: Colors.black),
 
-                                            )),
+                                          )),
 
-                                      ],
-                                    ),
+                                    ],
                                   ),
-                            );
-                          },
-                          child: Text(
-                            "Update user",
-                            style: TextStyle(color: Colors.black),
-
-                          )),
-                    ),
+                                ),
+                          );
+                        },
+                        child: Icon(Icons.edit)),
                     SizedBox(width: 10,),
-                    Expanded(
-                      child: ElevatedButton(
+                    ElevatedButton(
 
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.pink[300], // background
-                            onPrimary: Colors.purple, // foreground
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.pink[300], // background
+                          onPrimary: Colors.purple, // foreground
 
-                          ),
-                          onPressed: () {
-                            cubit.deleteUser(cubit.users[index].id);
-                          },
-                          child: Text(
-                            "Delete user",
-                            style: TextStyle(color: Colors.black),
-
-                          )),
+                        ),
+                        onPressed: () {
+                          cubit.deleteUser(cubit.users[index].id);
+                        },
+                        child: Icon(Icons.delete)
                     ),
                   ],)
 
